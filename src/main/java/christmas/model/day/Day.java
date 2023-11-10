@@ -1,12 +1,14 @@
-package christmas.model;
+package christmas.model.day;
 
-import christmas.model.constant.Calendar;
-import christmas.model.constant.DayConstant;
+import christmas.model.day.constant.Calendar;
+import christmas.model.day.constant.DayConstant;
+import christmas.model.event.Event;
+import christmas.model.event.constant.EventConstants;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-public class Day {
+public class Day implements Event {
     private final int day;
     private final Calendar calendar;
 
@@ -40,5 +42,10 @@ public class Day {
         } else if (dayOfWeek == DayOfWeek.SUNDAY) {
             return Calendar.SUNDAY;
         } return Calendar.WEEKDAY;
+    }
+
+    @Override
+    public int salePrice() {
+        return EventConstants.CHRISTMAS_D_DAY_SALE_PRICE.getSalePrice() - (day * 100);
     }
 }

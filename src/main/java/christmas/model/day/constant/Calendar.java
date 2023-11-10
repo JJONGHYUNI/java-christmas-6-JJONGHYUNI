@@ -1,4 +1,4 @@
-package christmas.model.constant;
+package christmas.model.day.constant;
 
 public enum Calendar {
     WEEKEND(false, true, false),

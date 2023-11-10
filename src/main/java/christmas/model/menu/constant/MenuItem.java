@@ -1,7 +1,7 @@
 package christmas.model.menu.constant;
 
 public enum MenuItem {
-    MUSHROOM_SOUP("양송이 수프", 6000, MenuCategory.APPITIZER.getCategoryName()),
+    MUSHROOM_SOUP("양송이수프", 6000, MenuCategory.APPITIZER.getCategoryName()),
     TAPAS("타파스", 5500, MenuCategory.APPITIZER.getCategoryName()),
     CAESAR_SALAD("시저샐러드", 8000, MenuCategory.APPITIZER.getCategoryName()),
     T_BONE_STEAK("티본스테이크", 55000, MenuCategory.MAIN.getCategoryName()),

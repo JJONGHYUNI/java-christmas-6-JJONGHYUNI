@@ -1,6 +1,6 @@
 package christmas.model.constant;
 
-public enum DayConstant {
+public enum DateConstant {
     WEEKEND(false, true, false),
     WEEKDAY(true, false, false),
     SUNDAY(true, false, true),
@@ -10,7 +10,7 @@ public enum DayConstant {
     private final boolean isWeekend;
     private final boolean isStarMarking;
 
-    DayConstant(boolean isWeekDay, boolean isWeekend, boolean isStarMarking) {
+    DateConstant(boolean isWeekDay, boolean isWeekend, boolean isStarMarking) {
         this.isWeekDay = isWeekDay;
         this.isWeekend = isWeekend;
         this.isStarMarking = isStarMarking;

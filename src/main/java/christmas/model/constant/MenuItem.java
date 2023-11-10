@@ -1,6 +1,6 @@
 package christmas.model.constant;
 
-public enum MenuItems {
+public enum MenuItem {
     MUSHROOM_SOUP("양송이 수프", 6000, MenuCategory.APPITIZER.getCategoryName()),
     TAPAS("타파스", 5500, MenuCategory.APPITIZER.getCategoryName()),
     CAESAR_SALAD("시저샐러드", 8000, MenuCategory.APPITIZER.getCategoryName()),
@@ -18,7 +18,7 @@ public enum MenuItems {
     private final int price;
     private final String category;
 
-    MenuItems(String menuName, int price, String category) {
+    MenuItem(String menuName, int price, String category) {
         this.menuName = menuName;
         this.price = price;
         this.category = category;

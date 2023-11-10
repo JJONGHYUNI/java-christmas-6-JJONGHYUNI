@@ -15,5 +15,14 @@ class DayTest {
         //when,then
         assertThatThrownBy(() -> new Day(day)).isInstanceOf(IllegalArgumentException.class);
     }
-    
+
+    @DisplayName("날자에 31초과 값이 들어올 경우 예외가 발생한다.")
+    @Test
+    void createDayOverBySize() {
+        //given
+        int day = 32;
+
+        //when,then
+        assertThatThrownBy(() -> new Day(day)).isInstanceOf(IllegalArgumentException.class);
+    }
 }

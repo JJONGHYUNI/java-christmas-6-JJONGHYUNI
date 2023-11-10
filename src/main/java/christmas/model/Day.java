@@ -11,6 +11,7 @@ public class Day {
     private final Calendar calendar;
 
     public Day(int day) {
+        validate(day);
         this.day = day;
         if(isChristmas(day)) {
             this.calendar = Calendar.CHRISTMAS;
@@ -18,7 +19,12 @@ public class Day {
         }
         this.calendar = whatEventOfDay(convertDayToDayOfWeek(day));
     }
-
+    
+    private void validate(int day) {
+        if (day > DayConstant.DAY_MAX_LENGTH.getNumber() || day < DayConstant.DAY_MIN_LENGTH.getNumber()) {
+            throw new IllegalArgumentException();
+        }
+    }
     private boolean isChristmas(int day) {
         return day == DayConstant.CHRISTMAS_DAY.getNumber();
     }

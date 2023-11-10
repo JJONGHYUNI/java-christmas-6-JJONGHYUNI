@@ -19,7 +19,7 @@ public class Day {
         }
         this.calendar = whatEventOfDay(convertDayToDayOfWeek(day));
     }
-    
+
     private void validate(int day) {
         if (day > DayConstant.DAY_MAX_LENGTH.getNumber() || day < DayConstant.DAY_MIN_LENGTH.getNumber()) {
             throw new IllegalArgumentException();

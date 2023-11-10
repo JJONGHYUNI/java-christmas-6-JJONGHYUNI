@@ -11,6 +11,6 @@ public class Dessert extends Menu implements Event {
 
     @Override
     public int salePrice() {
-        return getCount() - EventConstants.WEEKDAY_EVENT_SALE_PRICE.getSalePrice();
+        return getCount() * EventConstants.WEEKDAY_EVENT_SALE_PRICE.getSalePrice();
     }
 }

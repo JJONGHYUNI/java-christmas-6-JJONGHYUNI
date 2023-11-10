@@ -1,7 +1,7 @@
 package christmas.model.event.constant;
 
 public enum EventConstants {
-    CHRISTMAS_EVENT_SALE_PRICE(-1000),
+    CHRISTMAS_D_DAY_SALE_PRICE(-1000),
     WEEKDAY_EVENT_SALE_PRICE(-2023),
     WEEKEND_EVENT_SALE_PRICE(-2023),
     SPECIAL_EVENT_SALE_PRICE(-1000),

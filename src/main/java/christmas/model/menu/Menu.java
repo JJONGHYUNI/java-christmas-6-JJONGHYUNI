@@ -6,8 +6,8 @@ abstract class Menu {
     private final MenuItem menuItem;
     private final int count;
 
-    public Menu(MenuItem menuItem, int count) {
-        this.menuItem = menuItem;
+    public Menu(String menuName, int count) {
+        this.menuItem = MenuItem.findOrderMenu(menuName);
         this.count = count;
     }
 

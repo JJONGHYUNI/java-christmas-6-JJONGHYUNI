@@ -5,8 +5,9 @@ import christmas.model.event.constant.EventConstants;
 import christmas.model.menu.constant.MenuItem;
 
 public class MainMenu extends Menu implements Event {
-    public MainMenu(MenuItem menuItem, int count) {
-        super(menuItem, count);
+
+    public MainMenu(String menuName, int count) {
+        super(menuName, count);
     }
 
     @Override

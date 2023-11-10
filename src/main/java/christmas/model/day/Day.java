@@ -8,6 +8,10 @@ import christmas.model.event.constant.EventConstants;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
+import static christmas.model.day.constant.Calendar.*;
+import static christmas.model.day.constant.DayConstant.*;
+import static christmas.model.event.constant.EventConstants.*;
+
 public class Day implements Event {
     private final int day;
     private final Calendar calendar;
@@ -16,36 +20,37 @@ public class Day implements Event {
         validate(day);
         this.day = day;
         if(isChristmas(day)) {
-            this.calendar = Calendar.CHRISTMAS;
+            this.calendar = CHRISTMAS;
             return;
         }
         this.calendar = whatEventOfDay(convertDayToDayOfWeek(day));
     }
 
     private void validate(int day) {
-        if (day > DayConstant.DAY_MAX_LENGTH.getNumber() || day < DayConstant.DAY_MIN_LENGTH.getNumber()) {
+        if (day > DAY_MAX_LENGTH.getNumber() || day < DAY_MIN_LENGTH.getNumber()) {
             throw new IllegalArgumentException();
         }
     }
     private boolean isChristmas(int day) {
-        return day == DayConstant.CHRISTMAS_DAY.getNumber();
+        return day == CHRISTMAS_DAY.getNumber();
     }
 
     private DayOfWeek convertDayToDayOfWeek(int day) {
-        LocalDate localDate = LocalDate.of(DayConstant.CURRENT_YEAR.getNumber(), DayConstant.CURRENT_MONTH.getNumber(), day);
+        LocalDate localDate = LocalDate.of(CURRENT_YEAR.getNumber(), CURRENT_MONTH.getNumber(), day);
         return localDate.getDayOfWeek();
     }
 
     private Calendar whatEventOfDay(DayOfWeek dayOfWeek) {
         if (dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY) {
-            return Calendar.WEEKEND;
+            return WEEKEND;
         } else if (dayOfWeek == DayOfWeek.SUNDAY) {
-            return Calendar.SUNDAY;
-        } return Calendar.WEEKDAY;
+            return SUNDAY;
+        } return WEEKDAY;
     }
 
     @Override
     public int salePrice() {
-        return EventConstants.CHRISTMAS_D_DAY_SALE_PRICE.getSalePrice() - (day * 100);
+        return CHRISTMAS_D_DAY_DEFAULT_SALE_PRICE.getSalePrice() +
+                CHRISTMAS_D_DAY_ADD_SALE_PRICE.getSalePrice();
     }
 }

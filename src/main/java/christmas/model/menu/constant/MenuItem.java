@@ -1,4 +1,4 @@
-package christmas.model.constant;
+package christmas.model.menu.constant;
 
 public enum MenuItem {
     MUSHROOM_SOUP("양송이 수프", 6000, MenuCategory.APPITIZER.getCategoryName()),
@@ -22,5 +22,17 @@ public enum MenuItem {
         this.menuName = menuName;
         this.price = price;
         this.category = category;
+    }
+
+    public String getMenuName() {
+        return menuName;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getCategory() {
+        return category;
     }
 }

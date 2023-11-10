@@ -1,4 +1,4 @@
-package christmas.model.constant;
+package christmas.model.menu.constant;
 
 public enum MenuCategory {
     APPITIZER("애피타이저"),

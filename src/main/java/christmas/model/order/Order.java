@@ -4,6 +4,7 @@ import christmas.model.constant.DelimiterConstants;
 import christmas.model.event.Event;
 import christmas.model.menu.Menu;
 import christmas.model.menu.constant.MenuItem;
+import christmas.model.order.constant.OrderConstants;
 
 import java.util.*;
 
@@ -26,7 +27,8 @@ public class Order {
         Map<String, Integer> eachMenuCounts = new HashMap<>();
         menus.stream().forEach(menu -> {
             String category = menu.getMenuItem().getCategory();
-            eachMenuCounts.put(category, eachMenuCounts.getOrDefault(category, 0) + 1);
+            eachMenuCounts
+                    .put(category, eachMenuCounts.getOrDefault(category, OrderConstants.MENU_COUNT_INITIAL_VALUE.getNumber()) + OrderConstants.MENU_COUNT_ADD_VALUE.getNumber());
         });
         return eachMenuCounts;
     }
@@ -39,7 +41,7 @@ public class Order {
 
     //메뉴가 20개 이상이면 예외 발생
     private void validateMenuSize() {
-        if(menus.stream().map(Menu::getCount).mapToInt(Integer::intValue).sum() > 20) {
+        if(menus.stream().map(Menu::getCount).mapToInt(Integer::intValue).sum() > OrderConstants.TOTAL_COUNT_MAX_RANGE.getNumber()) {
             throw new IllegalArgumentException();
         }
     }

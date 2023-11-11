@@ -11,8 +11,8 @@ class Menu {
         String[] menuNameAndCount = splitOrderInput(orderInput);
         validateOrderLength(menuNameAndCount);
         this.menuItem = MenuItem.findOrderMenu(menuNameAndCount[0]);
-        validateCount(menuNameAndCount[1]);
-        this.count = validateCount(menuNameAndCount[1]);
+        int menuCount = validateCount(menuNameAndCount[1]);
+        this.count = validateCountRange(menuCount);
     }
 
     private static String[] splitOrderInput(String orderInput) {
@@ -33,10 +33,11 @@ class Menu {
         }
     }
 
-    private void validateCountRange(int count) {
+    private int validateCountRange(int count) {
         if(count < 1) {
             throw new IllegalArgumentException();
         }
+        return count;
     }
 
     public MenuItem getMenuItem() {

@@ -14,12 +14,12 @@ public enum DessertItem {
         this.category = category;
     }
 
-    public static MenuItem findOrderMenu(String orderName) {
-        for(MenuItem menuItem : MenuItem.values()) {
-            if (menuItem.getMenuName().equals(orderName)) return menuItem;
-        }
-        throw new IllegalArgumentException();
-    }
+//    public static MenuItem findOrderMenu(String orderName) {
+//        for(MenuItem menuItem : MenuItem.values()) {
+//            if (menuItem.getMenuName().equals(orderName)) return menuItem;
+//        }
+//        throw new IllegalArgumentException();
+//    }
 
     public String getMenuName() {
         return menuName;

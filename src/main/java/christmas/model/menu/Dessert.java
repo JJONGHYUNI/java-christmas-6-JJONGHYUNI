@@ -2,11 +2,10 @@ package christmas.model.menu;
 
 import christmas.model.event.Event;
 import christmas.model.event.constant.EventConstants;
-import christmas.model.menu.constant.MenuItem;
 
 public class Dessert extends Menu implements Event {
-    public Dessert(String order) {
-        super(order);
+    public Dessert(String menuName, int price, int count) {
+        super(menuName, price, count);
     }
 
     @Override

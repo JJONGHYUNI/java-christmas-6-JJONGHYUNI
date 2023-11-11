@@ -1,9 +1,7 @@
 package christmas.model.menu;
 
-import christmas.model.menu.constant.MenuItem;
-
 public class Appitizer extends Menu{
-    public Appitizer(String order) {
-        super(order);
+    public Appitizer(String menuName, int price, int count) {
+        super(menuName, price, count);
     }
 }

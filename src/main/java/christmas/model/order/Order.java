@@ -17,11 +17,19 @@ public class Order {
         Arrays.stream(menuInfos)
                 .forEach(menuInfo -> menus.add(new Menu(menuInfo)));
         validateDuplicate();
+        validateMenuSize();
         this.event = event;
     }
 
     private void validateOrder(String order) {
         if(order.isEmpty()){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    //메뉴가 20개 이상이면 예외 발생
+    private void validateMenuSize() {
+        if(menus.stream().map(Menu::getCount).mapToInt(Integer::intValue).sum() > 20) {
             throw new IllegalArgumentException();
         }
     }

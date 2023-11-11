@@ -29,4 +29,15 @@ class OrderTest {
         //when,then
         assertThatThrownBy(() -> new Order(order, event)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("메뉴의 개수가 20개 이상이면 예외가 발생한다.")
+    @Test
+    void createOrderOverBySize() {
+        //given
+        String order = "양송이수프-21";
+        Event event = new WeekDayEvent();
+
+        //when,then
+        assertThatThrownBy(() -> new Order(order, event)).isInstanceOf(IllegalArgumentException.class);
+    }
 }

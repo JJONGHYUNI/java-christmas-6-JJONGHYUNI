@@ -15,4 +15,14 @@ class OrderTest {
         //when,then
         assertThatThrownBy(() -> new Order(order)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("중복된 메뉴를 입력할 경우 예외가 발생한다.")
+    @Test
+    void createOrderDuplicate() {
+        //given
+        String order = "양송이수프-1,양송이수프-1";
+
+        //when,then
+        assertThatThrownBy(() -> new Order(order)).isInstanceOf(IllegalArgumentException.class);
+    }
 }

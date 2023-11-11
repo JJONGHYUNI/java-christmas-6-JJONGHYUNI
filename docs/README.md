@@ -69,11 +69,14 @@
     - List<Menu>
 - **EventCategory**
   - 크리스마스 디데이 할인, 평일 할인, 특별 할인, 주말 할인, 증정 이벤트
-- **Event**
-  - 필드
-    - 카테고리
-    - 할인 가격
-    - 할인 개수
+- **Event** (interface)
+  - 메소드
+    - sale()
+- **WeekDayEvent** : 평일 이벤트 (Event 구현)
+- **WeekendEvent** : 주말 이벤트 (Event 구현)
+- **SpecialEvent** : 특별 할인 (Event 구현)
+- **DdayEvent** : 디데이 할인 (Event 구현)
+- **GiftEvent** : 증정 이벤트 (Event 구현)
 - **영수증**
   - 필드
     - Menu

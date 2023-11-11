@@ -11,7 +11,7 @@ class DayTest {
     @Test
     void createDayUnderBySize() {
         //given
-        int day = 0;
+        String day = "0";
 
         //when,then
         assertThatThrownBy(() -> new Day(day)).isInstanceOf(IllegalArgumentException.class);
@@ -21,7 +21,7 @@ class DayTest {
     @Test
     void createDayOverBySize() {
         //given
-        int day = 32;
+        String day = "32";
 
         //when,then
         assertThatThrownBy(() -> new Day(day)).isInstanceOf(IllegalArgumentException.class);

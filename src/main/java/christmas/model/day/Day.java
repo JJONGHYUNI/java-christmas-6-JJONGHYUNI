@@ -1,29 +1,26 @@
 package christmas.model.day;
 
 import christmas.model.day.constant.Calendar;
-import christmas.model.day.constant.DayConstant;
-import christmas.model.event.Event;
-import christmas.model.event.constant.EventConstants;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 import static christmas.model.day.constant.Calendar.*;
 import static christmas.model.day.constant.DayConstant.*;
-import static christmas.model.event.constant.EventConstants.*;
 
-public class Day implements Event {
+public class Day {
     private final int day;
     private final Calendar calendar;
 
-    public Day(int day) {
-        validate(day);
-        this.day = day;
-        if(isChristmas(day)) {
+    public Day(String date) {
+        int checkDay = validateDateIsNumeric(date);
+        validate(checkDay);
+        this.day = checkDay;
+        if (isChristmas(checkDay)) {
             this.calendar = CHRISTMAS;
             return;
         }
-        this.calendar = whatEventOfDay(convertDayToDayOfWeek(day));
+        this.calendar = whatEventOfDay(convertDayToDayOfWeek(checkDay));
     }
 
     private void validate(int day) {
@@ -31,6 +28,15 @@ public class Day implements Event {
             throw new IllegalArgumentException();
         }
     }
+
+    private int validateDateIsNumeric(String date) {
+        try {
+            return Integer.parseInt(date);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private boolean isChristmas(int day) {
         return day == CHRISTMAS_DAY.getNumber();
     }
@@ -46,11 +52,5 @@ public class Day implements Event {
         } else if (dayOfWeek == DayOfWeek.SUNDAY) {
             return SUNDAY;
         } return WEEKDAY;
-    }
-
-    @Override
-    public int salePrice() {
-        return CHRISTMAS_D_DAY_DEFAULT_SALE_PRICE.getSalePrice() +
-                CHRISTMAS_D_DAY_ADD_SALE_PRICE.getSalePrice();
     }
 }

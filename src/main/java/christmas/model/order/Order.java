@@ -1,19 +1,20 @@
 package christmas.model.order;
 
-import christmas.model.menu.WootecoMenu;
+import christmas.model.constant.DelimiterConstants;
+import christmas.model.menu.Menu;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Order {
-    private final List<WootecoMenu> wootecoMenus = new ArrayList<>();
+    private final List<Menu> menus = new ArrayList<>();
 
-    public Order(String order) {
-        validateOrder(order);
-        String[] menuInfos = splitOrder(order);
+    public Order(String orders) {
+        validateOrder(orders);
+        String[] menuInfos = splitOrder(orders);
         Arrays.stream(menuInfos)
-                .forEach(menuInfo -> wootecoMenus.add(new WootecoMenu(menuInfo)));
+                .forEach(menuInfo -> menus.add(new Menu(menuInfo)));
     }
 
     private void validateOrder(String order) {
@@ -23,6 +24,6 @@ public class Order {
     }
 
     private String[] splitOrder(String order) {
-        return order.split(",");
+        return order.split(DelimiterConstants.ORDER_SPLIT_DELIMITER.getDelimiter());
     }
 }

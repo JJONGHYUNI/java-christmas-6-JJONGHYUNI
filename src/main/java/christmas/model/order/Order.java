@@ -5,6 +5,7 @@ import christmas.model.event.Event;
 import christmas.model.menu.Menu;
 import christmas.model.menu.constant.MenuItem;
 import christmas.model.order.constant.OrderConstants;
+import christmas.model.reward.Reward;
 
 import java.util.*;
 
@@ -55,5 +56,9 @@ public class Order {
 
     private String[] splitOrder(String order) {
         return order.split(DelimiterConstants.ORDER_SPLIT_DELIMITER.getDelimiter());
+    }
+
+    public Map<String, Integer> findReward() {
+        return event.salePrice(getEachMenuCount());
     }
 }

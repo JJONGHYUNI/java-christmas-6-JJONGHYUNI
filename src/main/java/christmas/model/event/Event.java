@@ -6,5 +6,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface Event {
-    Map<String, Integer> salePrice(int count);
+    Map<String, Integer> salePrice(Map<String, Integer> eachCategoryCounts);
 }

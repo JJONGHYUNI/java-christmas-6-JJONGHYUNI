@@ -21,6 +21,16 @@ public class Order {
         this.event = event;
     }
 
+    //각 카테고리별 메뉴 개수를 구하는 메소드
+    private Map<String, Integer> getEachMenuCount() {
+        Map<String, Integer> eachMenuCounts = new HashMap<>();
+        menus.stream().forEach(menu -> {
+            String category = menu.getMenuItem().getCategory();
+            eachMenuCounts.put(category, eachMenuCounts.getOrDefault(category, 0) + 1);
+        });
+        return eachMenuCounts;
+    }
+
     private void validateOrder(String order) {
         if(order.isEmpty()){
             throw new IllegalArgumentException();

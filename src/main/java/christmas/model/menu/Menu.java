@@ -1,16 +1,28 @@
 package christmas.model.menu;
 
-abstract class Menu {
-    private final String menuName;
-    private final int price;
+import christmas.model.menu.constant.MenuItem;
+
+class Menu {
+    private final MenuItem menuItem;
     private final int count;
 
-    public Menu(String menuName, int price, String count) {
-        int validCount = validateCount(count);
-        validateCountRange(validCount);
-        this.menuName = menuName;
-        this.price = price;
-        this.count = validCount;
+    //orderMenu = 양송이수프-1
+    public Menu(String orderInput) {
+        String[] menuNameAndCount = splitOrderInput(orderInput);
+        validateOrderLength(menuNameAndCount);
+        this.menuItem = MenuItem.findOrderMenu(menuNameAndCount[0]);
+        validateCount(menuNameAndCount[1]);
+        this.count = validateCount(menuNameAndCount[1]);
+    }
+
+    private static String[] splitOrderInput(String orderInput) {
+        return orderInput.split("-");
+    }
+
+    private void validateOrderLength(String[] menuNameAndCount) {
+        if(menuNameAndCount.length != 2) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private int validateCount(String count) {
@@ -27,12 +39,8 @@ abstract class Menu {
         }
     }
 
-    public String getMenuName() {
-        return menuName;
-    }
-
-    public int getPrice() {
-        return price;
+    public MenuItem getMenuItem() {
+        return menuItem;
     }
 
     public int getCount() {

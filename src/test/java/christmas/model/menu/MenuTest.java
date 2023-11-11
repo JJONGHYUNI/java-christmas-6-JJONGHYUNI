@@ -18,4 +18,16 @@ class MenuTest {
         assertThatThrownBy(() -> new Appitizer(menuItem.getMenuName(), menuItem.getPrice(), count))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("메뉴 개수가 1보다 작은 경우 예외가 발생한다")
+    @Test
+    void createMenuCountUnderBySize() {
+        //given
+        MenuItem menuItem = MenuItem.MUSHROOM_SOUP;
+        String count = "0";
+
+        //when,then
+        assertThatThrownBy(() -> new Appitizer(menuItem.getMenuName(), menuItem.getPrice(), count))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

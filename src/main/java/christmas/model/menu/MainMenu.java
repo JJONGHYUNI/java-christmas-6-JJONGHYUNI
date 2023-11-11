@@ -2,10 +2,10 @@ package christmas.model.menu;
 
 import christmas.model.event.Event;
 import christmas.model.event.constant.EventConstants;
+import christmas.model.menu.constant.MenuItem;
 
 public class MainMenu extends Menu implements Event {
-
-    public MainMenu(String menuName, int price, int count) {
+    public MainMenu(String menuName, int price, String count) {
         super(menuName, price, count);
     }
 

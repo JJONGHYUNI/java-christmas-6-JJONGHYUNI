@@ -1,21 +1,23 @@
 package christmas.model.order;
 
 import christmas.model.constant.DelimiterConstants;
+import christmas.model.event.Event;
 import christmas.model.menu.Menu;
 import christmas.model.menu.constant.MenuItem;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Order {
     private final List<Menu> menus = new ArrayList<>();
+    private final Event event;
 
-    public Order(String orders) {
+    public Order(String orders, Event event) {
         validateOrder(orders);
         String[] menuInfos = splitOrder(orders);
         Arrays.stream(menuInfos)
                 .forEach(menuInfo -> menus.add(new Menu(menuInfo)));
         validateDuplicate();
+        this.event = event;
     }
 
     private void validateOrder(String order) {

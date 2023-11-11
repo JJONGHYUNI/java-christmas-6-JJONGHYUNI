@@ -1,6 +1,6 @@
 package christmas.model.menu.constant;
 
-public enum MenuItem {
+public enum WootecoMenuItem {
     MUSHROOM_SOUP("양송이수프", 6000, MenuCategory.APPITIZER.getCategoryName()),
     TAPAS("타파스", 5500, MenuCategory.APPITIZER.getCategoryName()),
     CAESAR_SALAD("시저샐러드", 8000, MenuCategory.APPITIZER.getCategoryName()),
@@ -18,15 +18,15 @@ public enum MenuItem {
     private final int price;
     private final String category;
 
-    MenuItem(String menuName, int price, String category) {
+    WootecoMenuItem(String menuName, int price, String category) {
         this.menuName = menuName;
         this.price = price;
         this.category = category;
     }
 
-    public static MenuItem findOrderMenu(String orderName) {
-        for(MenuItem menuItem : MenuItem.values()) {
-            if (menuItem.getMenuName().equals(orderName)) return menuItem;
+    public static WootecoMenuItem findOrderMenu(String orderName) {
+        for(WootecoMenuItem wootecoMenuItem : WootecoMenuItem.values()) {
+            if (wootecoMenuItem.getMenuName().equals(orderName)) return wootecoMenuItem;
         }
         throw new IllegalArgumentException();
     }

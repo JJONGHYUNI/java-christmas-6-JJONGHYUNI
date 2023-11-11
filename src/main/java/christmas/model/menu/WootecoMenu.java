@@ -1,16 +1,16 @@
 package christmas.model.menu;
 
-import christmas.model.menu.constant.MenuItem;
+import christmas.model.menu.constant.WootecoMenuItem;
 
-class Menu {
-    private final MenuItem menuItem;
+public class WootecoMenu {
+    private final WootecoMenuItem wootecoMenuItem;
     private final int count;
 
     //orderMenu = 양송이수프-1
-    public Menu(String orderInput) {
+    public WootecoMenu(String orderInput) {
         String[] menuNameAndCount = splitOrderInput(orderInput);
         validateOrderLength(menuNameAndCount);
-        this.menuItem = MenuItem.findOrderMenu(menuNameAndCount[0]);
+        this.wootecoMenuItem = WootecoMenuItem.findOrderMenu(menuNameAndCount[0]);
         int menuCount = validateCount(menuNameAndCount[1]);
         this.count = validateCountRange(menuCount);
     }
@@ -40,8 +40,8 @@ class Menu {
         return count;
     }
 
-    public MenuItem getMenuItem() {
-        return menuItem;
+    public WootecoMenuItem getMenuItem() {
+        return wootecoMenuItem;
     }
 
     public int getCount() {

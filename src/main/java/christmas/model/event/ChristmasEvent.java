@@ -1,10 +1,16 @@
 package christmas.model.event;
 
+import christmas.model.event.constant.EventConstants;
+
+import java.util.HashMap;
 import java.util.Map;
 
 public class ChristmasEvent implements Event{
     @Override
-    public Map<String, Integer> salePrice() {
-        return null;
+    public Map<String, Integer> salePrice(int count) {
+        Map<String, Integer> events = new HashMap<>();
+        events.put(EventConstants.WEEKDAY_EVENT_SALE_PRICE.getSaleTitle(), EventConstants.WEEKDAY_EVENT_SALE_PRICE.getSalePrice());
+        events.put(EventConstants.SPECIAL_EVENT_SALE_PRICE.getSaleTitle(), EventConstants.SPECIAL_EVENT_SALE_PRICE.getSalePrice());
+        return events;
     }
 }

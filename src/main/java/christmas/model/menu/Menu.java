@@ -1,7 +1,5 @@
 package christmas.model.menu;
 
-import christmas.model.menu.constant.MenuItem;
-
 abstract class Menu {
     private final String menuName;
     private final int price;

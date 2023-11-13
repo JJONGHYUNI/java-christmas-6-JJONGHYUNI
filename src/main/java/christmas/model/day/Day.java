@@ -53,4 +53,12 @@ public class Day {
             return SUNDAY;
         } return WEEKDAY;
     }
+
+    public int getDay() {
+        return day;
+    }
+
+    public Calendar getCalendar() {
+        return calendar;
+    }
 }

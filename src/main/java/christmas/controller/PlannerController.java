@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.model.day.Day;
+import christmas.model.order.Order;
 import christmas.view.InputView;
 
 public class PlannerController {
@@ -16,5 +17,9 @@ public class PlannerController {
 
     private String getDate() {
         return inputView.readDate();
+    }
+
+    private String getOrder() {
+        return inputView.readMenu();
     }
 }

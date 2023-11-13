@@ -61,4 +61,8 @@ public class Order {
     public Map<String, Integer> findReward() {
         return event.salePrice(getEachMenuCount());
     }
+
+    public List<Menu> getMenus() {
+        return Collections.unmodifiableList(menus);
+    }
 }

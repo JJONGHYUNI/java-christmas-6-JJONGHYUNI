@@ -21,6 +21,12 @@ public class OutputView {
         menuInfoDtos.forEach(OutputView::printMenu);
     }
 
+    public void printAmountBeforeDiscount(int totalPrice) {
+        System.out.println(String.format(
+                OutputMessageConstants.TOTAL_AMOUNT_BEFORE_DISCOUNT_MESSAGE.getMessage(), totalPrice
+        ));
+    }
+
     private static void printMenu(MenuInfoDto menuInfoDto) {
         System.out.println(String.format(
                 OutputMessageConstants.MENU_INFO_MESSAGE.getMessage(), menuInfoDto.getName(), menuInfoDto.getCount()

@@ -24,8 +24,4 @@ public class EventService {
     private boolean isWeekend(Calendar calendar) {
         return calendar == Calendar.WEEKEND;
     }
-
-    private boolean isSunday(Calendar calendar) {
-        return calendar == Calendar.SUNDAY;
-    }
 }

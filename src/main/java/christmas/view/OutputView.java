@@ -10,8 +10,10 @@ public class OutputView {
         System.out.println(OutputMessageConstants.START_MESSAGE.getMessage());
     }
 
-    public void printPreviewEventMessage() {
-        System.out.println(OutputMessageConstants.PREVIEW_EVENT_MESSAGE.getMessage());
+    public void printPreviewEventMessage(int day) {
+        System.out.println(String.format(
+                OutputMessageConstants.PREVIEW_EVENT_MESSAGE.getMessage(), day
+        ));
     }
 
     public void printMenus(List<MenuInfoDto> menuInfoDtos) {

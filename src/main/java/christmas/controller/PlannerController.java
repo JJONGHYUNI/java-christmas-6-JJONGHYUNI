@@ -27,8 +27,8 @@ public class PlannerController {
         outputView.printStartMessage();
         Day day = new Day(getDate());
         Order order = new Order(getOrder(), eventService.createEvent(day));
-        outputView.printPreviewEventMessage();
 
+        printPreviewRewardsMessage(day);
         printOrderMenus(order);
     }
 
@@ -38,6 +38,10 @@ public class PlannerController {
 
     private String getOrder() {
         return inputView.readMenu();
+    }
+
+    private void printPreviewRewardsMessage(Day day) {
+        outputView.printPreviewEventMessage(day.getDay());
     }
 
     private void printOrderMenus(Order order) {

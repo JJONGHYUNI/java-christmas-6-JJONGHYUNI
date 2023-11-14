@@ -30,6 +30,7 @@ public class PlannerController {
 
         printPreviewRewardsMessage(day);
         printOrderMenus(order);
+        printTotalPriceBeforeDiscount(order.findTotalPrice());
     }
 
     private String getDate() {
@@ -42,6 +43,10 @@ public class PlannerController {
 
     private void printPreviewRewardsMessage(Day day) {
         outputView.printPreviewEventMessage(day.getDay());
+    }
+
+    private void printTotalPriceBeforeDiscount(int totalPrice) {
+        outputView.printAmountBeforeDiscount(totalPrice);
     }
 
     private void printOrderMenus(Order order) {

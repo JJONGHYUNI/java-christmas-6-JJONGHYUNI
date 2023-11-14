@@ -7,6 +7,7 @@ public enum EventConstants {
     WEEKEND_EVENT_SALE_PRICE("주말 할인 : ", -2023),
     SPECIAL_EVENT_SALE_PRICE("특별 할인 : ", -1000),
     GIFT_EVENT_PRICE("증정 할인 : ", -25000),
+    GIFT_EVENT_ITEM("샴페인", 1),
     DISCOUNT_NOT_APLLIED("없음", 0);
 
     private final String saleTitle;

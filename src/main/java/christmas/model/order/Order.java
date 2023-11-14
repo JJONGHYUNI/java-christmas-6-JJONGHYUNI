@@ -2,6 +2,7 @@ package christmas.model.order;
 
 import christmas.model.constant.DelimiterConstants;
 import christmas.model.event.Event;
+import christmas.model.event.constant.EventRule;
 import christmas.model.menu.Menu;
 import christmas.model.menu.constant.MenuItem;
 import christmas.model.order.constant.OrderConstants;
@@ -68,5 +69,9 @@ public class Order {
 
     public List<Menu> getMenus() {
         return Collections.unmodifiableList(menus);
+    }
+
+    public boolean isGiftEventApply() {
+        return findTotalPrice() > EventRule.GIFT_EVENT_APPLY_AMOUNT.getAmount();
     }
 }

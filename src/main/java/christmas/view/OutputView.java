@@ -1,9 +1,12 @@
 package christmas.view;
 
 import christmas.model.dto.MenuInfoDto;
+import christmas.model.event.constant.EventConstants;
 import christmas.view.constant.OutputMessageConstants;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 public class OutputView {
     public void printStartMessage() {
@@ -28,6 +31,19 @@ public class OutputView {
         System.out.println(String.format(
                 OutputMessageConstants.TOTAL_AMOUNT_BEFORE_DISCOUNT_MESSAGE.getMessage(), totalPrice
         ));
+        printNewLine();
+    }
+
+    public void printGiftItem(boolean giftEventApplied) {
+        System.out.println(OutputMessageConstants.GIFT_ITEM_NOTICE_MESSAGE.getMessage());
+        if(giftEventApplied) {
+            System.out.println(String.format(
+                    OutputMessageConstants.GIFT_ITEM_MESSAGE.getMessage(), EventConstants.GIFT_EVENT_ITEM.getSaleTitle(), EventConstants.GIFT_EVENT_ITEM.getSalePrice()
+            ));
+            printNewLine();
+            return;
+        }
+        System.out.println(OutputMessageConstants.NOTHING_MESSAGE.getMessage());
         printNewLine();
     }
 

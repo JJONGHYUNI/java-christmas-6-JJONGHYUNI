@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.model.day.Day;
 import christmas.model.dto.MenuInfoDto;
 import christmas.model.order.Order;
+import christmas.model.reward.Reward;
 import christmas.service.EventService;
 import christmas.service.OrderService;
 import christmas.view.InputView;
@@ -31,6 +32,7 @@ public class PlannerController {
         printPreviewRewardsMessage(day);
         printOrderMenus(order);
         printTotalPriceBeforeDiscount(order.findTotalPrice());
+        printGiftItem(order);
     }
 
     private String getDate() {
@@ -52,5 +54,9 @@ public class PlannerController {
     private void printOrderMenus(Order order) {
         List<MenuInfoDto> menuInfoDtos = orderService.getOrderMenuInfos(order);
         outputView.printMenus(menuInfoDtos);
+    }
+
+    private void printGiftItem(Order order) {
+        outputView.printGiftItem(order.isGiftEventApply());
     }
 }

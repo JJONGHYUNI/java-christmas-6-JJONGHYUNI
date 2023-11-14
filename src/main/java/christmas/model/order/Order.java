@@ -62,6 +62,10 @@ public class Order {
         return event.salePrice(getEachMenuCount());
     }
 
+    public int findTotalPrice() {
+        return menus.stream().mapToInt(Menu::getMenuPrice).sum();
+    }
+
     public List<Menu> getMenus() {
         return Collections.unmodifiableList(menus);
     }

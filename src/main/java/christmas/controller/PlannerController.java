@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.model.day.Day;
 import christmas.model.dto.MenuInfoDto;
 import christmas.model.dto.RewardInfoDto;
+import christmas.model.event.Event;
 import christmas.model.order.Order;
 import christmas.model.reward.Reward;
 import christmas.model.reward.Rewards;
@@ -15,15 +16,13 @@ import christmas.view.OutputView;
 import java.util.List;
 
 public class PlannerController {
-    private final InputView inputView;
-    private final OutputView outputView;
+    private static final InputView inputView = new InputView();
+    private static final OutputView outputView = new OutputView();
     private final EventService eventService;
     private final OrderService orderService;
     private final RewardsService rewardsService;
 
     public PlannerController() {
-        inputView = new InputView();
-        outputView = new OutputView();
         eventService = new EventService();
         orderService = new OrderService();
         rewardsService = new RewardsService();
@@ -31,8 +30,9 @@ public class PlannerController {
 
     public void planning() {
         outputView.printStartMessage();
-        Day day = new Day(getDate());
-        Order order = new Order(getOrder(), eventService.createEvent(day));
+        Day day = getDate();
+        Event event = eventService.createEvent(day);
+        Order order = getOrder(event);
         Rewards rewards = rewardsService.createRewards(day.receiveDdayReward(), order.findReward(), order.findGiftReward(), order.isEventApply());
 
         printPreviewRewardsMessage(day);
@@ -45,12 +45,24 @@ public class PlannerController {
         printBadge(rewards);
     }
 
-    private String getDate() {
-        return inputView.readDate();
+    private Day getDate() {
+        while (true) {
+            try {
+                return new Day(inputView.readDate());
+            } catch (IllegalArgumentException e) {
+                outputView.printErrorMessage(e.getMessage());
+            }
+        }
     }
 
-    private String getOrder() {
-        return inputView.readMenu();
+    private Order getOrder(Event event) {
+        while (true) {
+            try {
+                return new Order(inputView.readMenu(), event);
+            } catch (IllegalArgumentException e) {
+                outputView.printErrorMessage(e.getMessage());
+            }
+        }
     }
 
     private void printPreviewRewardsMessage(Day day) {

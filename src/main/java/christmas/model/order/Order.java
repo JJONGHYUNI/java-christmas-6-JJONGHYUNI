@@ -1,6 +1,7 @@
 package christmas.model.order;
 
 import christmas.model.constant.DelimiterConstants;
+import christmas.model.constant.ErrorMessageConstants;
 import christmas.model.dto.RewardInfoDto;
 import christmas.model.event.Event;
 import christmas.model.event.constant.EventRule;
@@ -10,6 +11,7 @@ import christmas.model.order.constant.OrderConstants;
 
 import java.util.*;
 
+import static christmas.model.constant.ErrorMessageConstants.*;
 import static christmas.model.event.constant.EventConstants.*;
 
 public class Order {
@@ -39,21 +41,21 @@ public class Order {
 
     private void validateOrder(String order) {
         if(order.isEmpty()){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MENU_EXCEPTION_MESSAGE.getMessage());
         }
     }
 
     //메뉴가 20개 이상이면 예외 발생
     private void validateMenuSize() {
         if(menus.stream().map(Menu::getCount).mapToInt(Integer::intValue).sum() > OrderConstants.TOTAL_COUNT_MAX_RANGE.getNumber()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MENU_EXCEPTION_MESSAGE.getMessage());
         }
     }
 
     private void validateDuplicate() {
         List<MenuItem> menuItems = menus.stream().map(Menu::getMenuItem).toList();
         if (menuItems.size() != new HashSet<>(menuItems).size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MENU_EXCEPTION_MESSAGE.getMessage());
         }
     }
 

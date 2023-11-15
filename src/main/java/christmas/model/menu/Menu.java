@@ -1,8 +1,11 @@
 package christmas.model.menu;
 
 import christmas.model.constant.DelimiterConstants;
+import christmas.model.constant.ErrorMessageConstants;
 import christmas.model.menu.constant.MenuConstants;
 import christmas.model.menu.constant.MenuItem;
+
+import static christmas.model.constant.ErrorMessageConstants.*;
 
 public class Menu {
     private final MenuItem menuItem;
@@ -23,7 +26,7 @@ public class Menu {
 
     private void validateOrderLength(String[] menuNameAndCount) {
         if(menuNameAndCount.length != MenuConstants.MENU_PAIR_LENGTH.getNumber()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MENU_EXCEPTION_MESSAGE.getMessage());
         }
     }
 
@@ -31,13 +34,13 @@ public class Menu {
         try {
             return Integer.parseInt(count);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MENU_EXCEPTION_MESSAGE.getMessage());
         }
     }
 
     private int validateCountRange(int count) {
         if(count < MenuConstants.MENU_COUNT_MIN_RANGE.getNumber()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MENU_EXCEPTION_MESSAGE.getMessage());
         }
         return count;
     }

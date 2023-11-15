@@ -73,6 +73,10 @@ public class OutputView {
         System.out.println(String.format(EVENT_BADGE_MESSAGE.getMessage(), badge));
     }
 
+    public void printErrorMessage(String message) {
+        System.out.println(message);
+    }
+
     private static void printMenu(MenuInfoDto menuInfoDto) {
         System.out.println(String.format(
                 MENU_INFO_MESSAGE.getMessage(), menuInfoDto.getName(), menuInfoDto.getCount()

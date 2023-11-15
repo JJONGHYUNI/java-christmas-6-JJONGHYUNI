@@ -1,13 +1,12 @@
 package christmas.model.order;
 
 import christmas.model.constant.DelimiterConstants;
+import christmas.model.dto.RewardInfoDto;
 import christmas.model.event.Event;
-import christmas.model.event.constant.EventConstants;
 import christmas.model.event.constant.EventRule;
 import christmas.model.menu.Menu;
 import christmas.model.menu.constant.MenuItem;
 import christmas.model.order.constant.OrderConstants;
-import christmas.model.reward.Reward;
 
 import java.util.*;
 
@@ -63,18 +62,18 @@ public class Order {
         return order.split(DelimiterConstants.ORDER_SPLIT_DELIMITER.getDelimiter());
     }
 
-    public Map<String, Integer> findReward() {
+    public List<RewardInfoDto> findReward() {
         return event.salePrice(getEachMenuCount());
     }
 
-    public Map<String, Integer> findGiftReward() {
-        Map<String, Integer> rewardInfo = new HashMap<>();
+    public List<RewardInfoDto> findGiftReward() {
+        List<RewardInfoDto> rewardInfoDtos = new ArrayList<>();
         if(isGiftEventApply()) {
-            rewardInfo.put(
+            rewardInfoDtos.add(RewardInfoDto.create(
                     GIFT_EVENT_ITEM.getSaleTitle(), GIFT_EVENT_PRICE.getSalePrice()
-            );
+            ));
         }
-        return rewardInfo;
+        return rewardInfoDtos;
     }
 
     public int findTotalPrice() {

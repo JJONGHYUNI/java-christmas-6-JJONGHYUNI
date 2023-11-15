@@ -7,9 +7,9 @@ public class Reward {
     private final String title;
     private final int benefit;
 
-    public Reward(Map.Entry<String, Integer> reward) {
-        this.title = reward.getKey();
-        this.benefit = reward.getValue();
+    public Reward(String title, int benefit) {
+        this.title = title;
+        this.benefit = benefit;
     }
 
     public String getTitle() {

@@ -4,22 +4,25 @@ import christmas.model.dto.RewardInfoDto;
 import christmas.model.reward.Reward;
 import christmas.model.reward.Rewards;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class RewardsService {
     private final RewardService rewardService = new RewardService();
 
-    public Rewards createRewards(Map<String, Integer> dDayReward, Map<String, Integer> discountReward, Map<String, Integer> giftReward) {
+    public Rewards createRewards(List<RewardInfoDto> dDayRewards, List<RewardInfoDto> discountRewards, List<RewardInfoDto> giftRewards) {
         Rewards rewards = new Rewards();
-        dDayReward.entrySet().forEach(rewardInfo -> addReward(rewards, rewardInfo));
-        discountReward.entrySet().forEach(rewardInfo -> addReward(rewards, rewardInfo));
-        giftReward.entrySet().forEach(rewardInfo -> addReward(rewards, rewardInfo));
+        List<RewardInfoDto> rewardInfoDtos = new ArrayList<>();
+        rewardInfoDtos.addAll(dDayRewards);
+        rewardInfoDtos.addAll(discountRewards);
+        rewardInfoDtos.addAll(giftRewards);
+        rewardInfoDtos.forEach(rewardInfoDto -> addReward(rewards, rewardInfoDto));
         return rewards;
     }
 
-    private static void addReward(Rewards rewards, Map.Entry<String, Integer> rewardInfo) {
-        Reward reward = new Reward(rewardInfo);
+    private static void addReward(Rewards rewards, RewardInfoDto rewardInfoDto) {
+        Reward reward = new Reward(rewardInfoDto.getRewardTitle(), rewardInfoDto.getRewardPrice());
         rewards.addReward(reward);
     }
 

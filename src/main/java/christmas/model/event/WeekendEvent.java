@@ -1,17 +1,21 @@
 package christmas.model.event;
 
+import christmas.model.dto.RewardInfoDto;
 import christmas.model.event.constant.EventConstants;
 import christmas.model.menu.constant.MenuCategory;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+
+import static christmas.model.event.constant.EventConstants.WEEKEND_EVENT_SALE_PRICE;
 
 public class WeekendEvent implements Event{
     @Override
-    public Map<String, Integer> salePrice(Map<String, Integer> eachCategoryCounts) {
-        Map<String, Integer> events = new HashMap<>();
-        events.put(EventConstants.WEEKEND_EVENT_SALE_PRICE.getSaleTitle(),
-                EventConstants.WEEKEND_EVENT_SALE_PRICE.getSalePrice() * eachCategoryCounts.get(MenuCategory.MAIN.getCategoryName()));
-        return events;
+    public List<RewardInfoDto> salePrice(Map<String, Integer> eachCategoryCounts) {
+        List<RewardInfoDto> rewardInfoDtos = new ArrayList<>();
+        rewardInfoDtos.add(RewardInfoDto.create(WEEKEND_EVENT_SALE_PRICE.getSaleTitle(),
+                WEEKEND_EVENT_SALE_PRICE.getSalePrice() * eachCategoryCounts.get(MenuCategory.MAIN.getCategoryName())));
+        return rewardInfoDtos;
     }
 }

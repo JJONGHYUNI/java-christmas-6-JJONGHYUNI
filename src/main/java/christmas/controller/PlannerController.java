@@ -79,6 +79,6 @@ public class PlannerController {
     }
 
     private void printTotalPriceAfterDiscount(Order order, Rewards rewards) {
-        outputView.printPriceAfterDiscount(order.findTotalPrice() + rewards.getBenfit());
+        outputView.printPriceAfterDiscount(order.findTotalPrice() + rewards.calculateDiscountPrice());
     }
 }

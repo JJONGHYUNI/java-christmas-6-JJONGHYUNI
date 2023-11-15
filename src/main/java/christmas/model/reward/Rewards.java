@@ -1,5 +1,7 @@
 package christmas.model.reward;
 
+import christmas.model.event.constant.EventConstants;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,5 +23,13 @@ public class Rewards {
 
     public int getBenfit() {
         return rewards.stream().mapToInt(Reward::getBenefit).sum();
+    }
+
+    public int calculateDiscountPrice() {
+        List<String> rewardTitles = rewards.stream().map(Reward::getTitle).toList();
+        if (rewardTitles.contains(EventConstants.GIFT_EVENT_PRICE.getSaleTitle())) {
+            return getBenfit() - EventConstants.GIFT_EVENT_PRICE.getSalePrice();
+        }
+        return getBenfit();
     }
 }

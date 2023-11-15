@@ -69,7 +69,7 @@ public class Order {
         List<RewardInfoDto> rewardInfoDtos = new ArrayList<>();
         if(isGiftEventApply()) {
             rewardInfoDtos.add(RewardInfoDto.create(
-                    GIFT_EVENT_ITEM.getSaleTitle(), GIFT_EVENT_PRICE.getSalePrice()
+                    GIFT_EVENT_PRICE.getSaleTitle(), GIFT_EVENT_PRICE.getSalePrice()
             ));
         }
         return rewardInfoDtos;

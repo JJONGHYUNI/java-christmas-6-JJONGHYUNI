@@ -6,8 +6,19 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 class MenuTest {
+    @DisplayName("정상적인 메뉴가 입력 됐을 경우 예외가 발생하지 않는다.")
+    @Test
+    void createMenuSuccess() {
+        //given
+        String order = "양송이수프-1";
+
+        //when,then
+        assertThatCode(() -> new Menu(order)).doesNotThrowAnyException();
+    }
+
     @DisplayName("메뉴와 메뉴 개수가 한 쌍이 아닐 경우 예외가 발생한다.")
     @Test
     void createMenuIsNotPare() {
@@ -50,7 +61,7 @@ class MenuTest {
 
     @DisplayName("메뉴 한 쌍이 정상적으로 입력됐을 때 정상적으로 만들어지는 지 확인한다.")
     @Test
-    void createMenuSuccess() {
+    void checkMenuSuccess() {
         //given
         String order = "양송이수프-1";
 

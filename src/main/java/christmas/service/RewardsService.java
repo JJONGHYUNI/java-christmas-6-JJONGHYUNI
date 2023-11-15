@@ -13,7 +13,7 @@ public class RewardsService {
 
     public Rewards createRewards(List<RewardInfoDto> dDayRewards, List<RewardInfoDto> discountRewards, List<RewardInfoDto> giftRewards, boolean isApplied) {
         Rewards rewards = new Rewards();
-        if(isApplied) {
+        if (isApplied) {
             return rewards;
         }
         List<RewardInfoDto> rewardInfoDtos = new ArrayList<>();

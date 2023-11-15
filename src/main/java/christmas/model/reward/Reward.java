@@ -1,8 +1,5 @@
 package christmas.model.reward;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Reward {
     private final String title;
     private final int benefit;

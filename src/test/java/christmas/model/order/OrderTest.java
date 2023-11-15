@@ -2,18 +2,31 @@ package christmas.model.order;
 
 import christmas.model.event.Event;
 import christmas.model.event.WeekDayEvent;
+import christmas.model.menu.Menu;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class OrderTest {
+    private final static Event event = new WeekDayEvent();
+
+    @DisplayName("정상적인 주문이 들어왔을 경우 예외가 발생하지 않는다.")
+    @Test
+    void createMenuSuccess() {
+        //given
+        String order = "양송이수프-1,제로콜라-3";
+
+        //when,then
+        assertThatCode(() -> new Order(order, event)).doesNotThrowAnyException();
+    }
+
     @DisplayName("주문이 비어있을 경우 예외가 발생한다.")
     @Test
     void createOrderByEmpty() {
         //given
         String order = "";
-        Event event = new WeekDayEvent();
 
         //when,then
         assertThatThrownBy(() -> new Order(order, event)).isInstanceOf(IllegalArgumentException.class);
@@ -24,7 +37,6 @@ class OrderTest {
     void createOrderDuplicate() {
         //given
         String order = "양송이수프-1,양송이수프-1";
-        Event event = new WeekDayEvent();
 
         //when,then
         assertThatThrownBy(() -> new Order(order, event)).isInstanceOf(IllegalArgumentException.class);
@@ -35,7 +47,6 @@ class OrderTest {
     void createOrderOverBySize() {
         //given
         String order = "양송이수프-21";
-        Event event = new WeekDayEvent();
 
         //when,then
         assertThatThrownBy(() -> new Order(order, event)).isInstanceOf(IllegalArgumentException.class);
@@ -46,7 +57,6 @@ class OrderTest {
     void createOrderOnlyDrinks() {
         //given
         String order = "제로콜라-2";
-        Event event = new WeekDayEvent();
 
         //when,then
         assertThatThrownBy(() -> new Order(order, event)).isInstanceOf(IllegalArgumentException.class);

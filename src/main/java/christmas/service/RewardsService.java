@@ -6,10 +6,10 @@ import christmas.model.reward.Rewards;
 import java.util.Map;
 
 public class RewardsService {
-    public Rewards createRewards(Map<String, Integer> discountReward, Map<String, Integer> dDayReward, Map<String, Integer> giftReward) {
+    public Rewards createRewards(Map<String, Integer> dDayReward, Map<String, Integer> discountReward, Map<String, Integer> giftReward) {
         Rewards rewards = new Rewards();
-        discountReward.entrySet().forEach(rewardInfo -> addReward(rewards, rewardInfo));
         dDayReward.entrySet().forEach(rewardInfo -> addReward(rewards, rewardInfo));
+        discountReward.entrySet().forEach(rewardInfo -> addReward(rewards, rewardInfo));
         giftReward.entrySet().forEach(rewardInfo -> addReward(rewards, rewardInfo));
         return rewards;
     }

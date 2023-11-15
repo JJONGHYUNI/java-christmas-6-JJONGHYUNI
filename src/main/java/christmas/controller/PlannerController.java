@@ -32,6 +32,7 @@ public class PlannerController {
         outputView.printStartMessage();
         Day day = new Day(getDate());
         Order order = new Order(getOrder(), eventService.createEvent(day));
+        Rewards rewards = rewardsService.createRewards(day.receiveDdayReward(), order.findReward(), order.findGiftReward());
 
         printPreviewRewardsMessage(day);
         printOrderMenus(order);

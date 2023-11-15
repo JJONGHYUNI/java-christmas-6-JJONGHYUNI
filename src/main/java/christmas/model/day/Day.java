@@ -1,9 +1,12 @@
 package christmas.model.day;
 
 import christmas.model.day.constant.Calendar;
+import christmas.model.day.constant.DayConstant;
+import christmas.model.event.Event;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.Map;
 
 import static christmas.model.day.constant.Calendar.*;
 import static christmas.model.day.constant.DayConstant.*;
@@ -60,5 +63,9 @@ public class Day {
 
     public Calendar getCalendar() {
         return calendar;
+    }
+
+    private boolean isAppliedDdayEvent() {
+        return day <= CHRISTMAS_DAY.getNumber();
     }
 }

@@ -4,17 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Reward {
-    private final Map<String, Integer> rewards;
+    private final String title;
+    private final int benefit;
 
-    public Reward() {
-        rewards = new HashMap<>();
-    }
-
-    public void addReward(Map<String, Integer> reward) {
-        rewards.putAll(reward);
-    }
-
-    public int getBenefit() {
-        return rewards.values().stream().mapToInt(Integer::intValue).sum();
+    public Reward(Map.Entry<String, Integer> reward) {
+        this.title = reward.getKey();
+        this.benefit = reward.getValue();
     }
 }

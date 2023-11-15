@@ -44,7 +44,7 @@ public class Menu {
         return count;
     }
 
-    public int getMenuPrice() {
+    public int calculateMenuPrice() {
         return menuItem.getPrice() * count;
     }
 

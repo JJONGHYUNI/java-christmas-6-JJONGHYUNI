@@ -85,8 +85,8 @@ public class Order {
         return rewardInfoDtos;
     }
 
-    public int findTotalPrice() {
-        return menus.stream().mapToInt(Menu::getMenuPrice).sum();
+    public int calculateTotalPrice() {
+        return menus.stream().mapToInt(Menu::calculateMenuPrice).sum();
     }
 
     public List<Menu> getMenus() {
@@ -94,10 +94,10 @@ public class Order {
     }
 
     public boolean isGiftEventApply() {
-        return findTotalPrice() > EventRule.GIFT_EVENT_APPLY_AMOUNT.getAmount();
+        return calculateTotalPrice() > EventRule.GIFT_EVENT_APPLY_AMOUNT.getAmount();
     }
 
     public boolean isEventApply() {
-        return event.isAppliedEvent(findTotalPrice());
+        return event.isAppliedEvent(calculateTotalPrice());
     }
 }

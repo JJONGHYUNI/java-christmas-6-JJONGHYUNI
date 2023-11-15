@@ -69,7 +69,7 @@ public class PlannerController {
     }
 
     private void printTotalPriceBeforeDiscount(Order order) {
-        outputView.printAmountBeforeDiscount(order.findTotalPrice());
+        outputView.printAmountBeforeDiscount(order.calculateTotalPrice());
     }
 
     private void printOrderMenus(Order order) {
@@ -91,7 +91,7 @@ public class PlannerController {
     }
 
     private void printTotalPriceAfterDiscount(Order order, Rewards rewards) {
-        outputView.printPriceAfterDiscount(order.findTotalPrice() + rewards.calculateDiscountPrice());
+        outputView.printPriceAfterDiscount(order.calculateTotalPrice() + rewards.calculateDiscountPrice());
     }
 
     private void printBadge(Rewards rewards) {

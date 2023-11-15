@@ -1,5 +1,6 @@
 package christmas.model.day;
 
+import christmas.model.constant.ErrorMessageConstants;
 import christmas.model.day.constant.Calendar;
 import christmas.model.dto.RewardInfoDto;
 
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static christmas.model.constant.ErrorMessageConstants.*;
 import static christmas.model.day.constant.Calendar.*;
 import static christmas.model.day.constant.DayConstant.*;
 import static christmas.model.event.constant.EventConstants.*;
@@ -29,7 +31,7 @@ public class Day {
 
     private void validate(int day) {
         if (day > DAY_MAX_LENGTH.getNumber() || day < DAY_MIN_LENGTH.getNumber()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DATE_EXCEPTION_MESSAGE.getMessage());
         }
     }
 
@@ -37,7 +39,7 @@ public class Day {
         try {
             return Integer.parseInt(date);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DATE_EXCEPTION_MESSAGE.getMessage());
         }
     }
 

@@ -60,6 +60,13 @@ public class OutputView {
     public void printTotalBenefit(int totalBenefit) {
         System.out.println(TOTAL_BENEFIT_NOTICE_MESSAGE.getMessage());
         System.out.println(String.format(TOTAL_BENEFIT_MESSAGE.getMessage(), totalBenefit));
+        printNewLine();
+    }
+
+    public void printPriceAfterDiscount(int totalPrice) {
+        System.out.println(PRICE_AFTER_DISCOUNT_NOTICE_MESSAGE.getMessage());
+        System.out.println(String.format(PRICE_AFTER_DISCOUNT_MESSAGE.getMessage(), totalPrice));
+        printNewLine();
     }
 
     private static void printMenu(MenuInfoDto menuInfoDto) {

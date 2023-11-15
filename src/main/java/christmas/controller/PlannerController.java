@@ -37,10 +37,11 @@ public class PlannerController {
 
         printPreviewRewardsMessage(day);
         printOrderMenus(order);
-        printTotalPriceBeforeDiscount(order.findTotalPrice());
+        printTotalPriceBeforeDiscount(order);
         printGiftItem(order);
         printRewards(rewards);
         printTotalBenefit(rewards);
+        printTotalPriceAfterDiscount(order, rewards);
     }
 
     private String getDate() {
@@ -55,8 +56,8 @@ public class PlannerController {
         outputView.printPreviewEventMessage(day.getDay());
     }
 
-    private void printTotalPriceBeforeDiscount(int totalPrice) {
-        outputView.printAmountBeforeDiscount(totalPrice);
+    private void printTotalPriceBeforeDiscount(Order order) {
+        outputView.printAmountBeforeDiscount(order.findTotalPrice());
     }
 
     private void printOrderMenus(Order order) {
@@ -75,5 +76,9 @@ public class PlannerController {
 
     private void printTotalBenefit(Rewards rewards) {
         outputView.printTotalBenefit(rewards.getBenfit());
+    }
+
+    private void printTotalPriceAfterDiscount(Order order, Rewards rewards) {
+        outputView.printPriceAfterDiscount(order.findTotalPrice() + rewards.getBenfit());
     }
 }

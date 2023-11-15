@@ -14,7 +14,7 @@ public enum OutputMessageConstants {
     REWARD_INFO_MESSAGE("%s: %,d원"),
     TOTAL_BENEFIT_NOTICE_MESSAGE("<총혜택 금액>"),
     TOTAL_BENEFIT_MESSAGE("%,d원"),
-    PRICE_AFTER_DISCOUNT_NOTICE_MESSAGE("<할인 후 예상 결제 금액"),
+    PRICE_AFTER_DISCOUNT_NOTICE_MESSAGE("<할인 후 예상 결제 금액>"),
     PRICE_AFTER_DISCOUNT_MESSAGE("%,d원"),
     EVENT_BADGE_NOTICE_MESSAGE("<12월 이벤트 배지>"),
     EVENT_BADGE_MESSAGE("%s");

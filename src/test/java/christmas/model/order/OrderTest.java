@@ -2,7 +2,6 @@ package christmas.model.order;
 
 import christmas.model.event.Event;
 import christmas.model.event.WeekDayEvent;
-import christmas.model.menu.Menu;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -21,20 +21,20 @@ public class Rewards {
         return Collections.unmodifiableList(rewards);
     }
 
-    public int getBenfit() {
+    public int calculateBenfit() {
         return rewards.stream().mapToInt(Reward::getBenefit).sum();
     }
 
     public int calculateDiscountPrice() {
         List<String> rewardTitles = rewards.stream().map(Reward::getTitle).toList();
         if (rewardTitles.contains(GIFT_EVENT_PRICE.getTitle())) {
-            return getBenfit() - GIFT_EVENT_PRICE.getPrice();
+            return calculateBenfit() - GIFT_EVENT_PRICE.getPrice();
         }
-        return getBenfit();
+        return calculateBenfit();
     }
 
     public String findBadgeForBenefit() {
-        int benefit = - getBenfit();
+        int benefit = - calculateBenfit();
         if (benefit >= SANTA_BADGE_INFORMATION.getPrice()) {
             return SANTA_BADGE_INFORMATION.getTitle();
         }

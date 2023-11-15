@@ -1,6 +1,5 @@
 package christmas.model.event;
 
-import christmas.model.menu.Menu;
 import christmas.model.menu.constant.MenuCategory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,8 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.assertThatCode;
+
 class EventTest {
     private static final Event event = new WeekDayEvent();
 

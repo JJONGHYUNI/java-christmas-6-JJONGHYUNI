@@ -3,7 +3,6 @@ package christmas.view;
 import christmas.model.dto.MenuInfoDto;
 import christmas.model.dto.RewardInfoDto;
 import christmas.model.event.constant.EventConstants;
-import christmas.view.constant.OutputMessageConstants;
 
 import java.util.List;
 
@@ -39,7 +38,7 @@ public class OutputView {
         System.out.println(GIFT_ITEM_NOTICE_MESSAGE.getMessage());
         if (giftEventApplied) {
             System.out.println(String.format(
-                    GIFT_ITEM_MESSAGE.getMessage(), EventConstants.GIFT_EVENT_ITEM.getSaleTitle(), EventConstants.GIFT_EVENT_ITEM.getSalePrice()
+                    GIFT_ITEM_MESSAGE.getMessage(), EventConstants.GIFT_EVENT_ITEM.getTitle(), EventConstants.GIFT_EVENT_ITEM.getPrice()
             ));
             printNewLine();
             return;
@@ -67,6 +66,11 @@ public class OutputView {
         System.out.println(PRICE_AFTER_DISCOUNT_NOTICE_MESSAGE.getMessage());
         System.out.println(String.format(PRICE_AFTER_DISCOUNT_MESSAGE.getMessage(), totalPrice));
         printNewLine();
+    }
+
+    public void printBadge(String badge) {
+        System.out.println(EVENT_BADGE_NOTICE_MESSAGE.getMessage());
+        System.out.println(String.format(EVENT_BADGE_MESSAGE.getMessage(), badge));
     }
 
     private static void printMenu(MenuInfoDto menuInfoDto) {

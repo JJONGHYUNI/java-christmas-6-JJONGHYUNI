@@ -1,7 +1,6 @@
 package christmas.model.event;
 
 import christmas.model.dto.RewardInfoDto;
-import christmas.model.event.constant.EventConstants;
 import christmas.model.menu.constant.MenuCategory;
 
 import java.util.ArrayList;
@@ -15,8 +14,8 @@ public class WeekDayEvent implements Event{
     public List<RewardInfoDto> salePrice(Map<String, Integer> eachCategoryCounts) {
         List<RewardInfoDto> rewardInfoDtos = new ArrayList<>();
         if (isContainDessertCategory(eachCategoryCounts)) {
-            rewardInfoDtos.add(RewardInfoDto.create(WEEKDAY_EVENT_SALE_PRICE.getSaleTitle(),
-                    WEEKDAY_EVENT_SALE_PRICE.getSalePrice() * eachCategoryCounts.get(MenuCategory.DESSERT.getCategoryName())));
+            rewardInfoDtos.add(RewardInfoDto.create(WEEKDAY_EVENT_SALE_PRICE.getTitle(),
+                    WEEKDAY_EVENT_SALE_PRICE.getPrice() * eachCategoryCounts.get(MenuCategory.DESSERT.getCategoryName())));
         }
         return rewardInfoDtos;
     }

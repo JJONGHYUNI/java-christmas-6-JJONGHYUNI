@@ -2,14 +2,11 @@ package christmas.model.day;
 
 import christmas.model.day.constant.Calendar;
 import christmas.model.dto.RewardInfoDto;
-import christmas.model.event.constant.EventConstants;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static christmas.model.day.constant.Calendar.*;
 import static christmas.model.day.constant.DayConstant.*;
@@ -73,8 +70,8 @@ public class Day {
         List<RewardInfoDto> rewardInfoDtos = new ArrayList<>();
         if (isAppliedDdayEvent()) {
             rewardInfoDtos.add(RewardInfoDto.create(
-                    CHRISTMAS_D_DAY_DEFAULT_SALE_PRICE.getSaleTitle(),
-                    CHRISTMAS_D_DAY_DEFAULT_SALE_PRICE.getSalePrice() + CHRISTMAS_D_DAY_ADD_SALE_PRICE.getSalePrice() * (day - 1)
+                    CHRISTMAS_D_DAY_DEFAULT_SALE_PRICE.getTitle(),
+                    CHRISTMAS_D_DAY_DEFAULT_SALE_PRICE.getPrice() + CHRISTMAS_D_DAY_ADD_SALE_PRICE.getPrice() * (day - 1)
             ));
         }
         return rewardInfoDtos;

@@ -10,21 +10,22 @@ public enum EventConstants {
     GIFT_EVENT_ITEM("샴페인", 1),
     STAR_BADGE_INFORMATION("별", 5000),
     TREE_BADGE_INFORMATION("트리", 10000),
-    SANTA_BADGE_INFORMATION("산타", 20000);
+    SANTA_BADGE_INFORMATION("산타", 20000),
+    NOTHING_BADGE_INFORMATION("없음", 0);
 
-    private final String saleTitle;
-    private final int salePrice;
+    private final String Title;
+    private final int Price;
 
     EventConstants(String title, int number) {
-        this.saleTitle = title;
-        this.salePrice = number;
+        this.Title = title;
+        this.Price = number;
     }
 
-    public int getSalePrice() {
-        return salePrice;
+    public int getPrice() {
+        return Price;
     }
 
-    public String getSaleTitle() {
-        return saleTitle;
+    public String getTitle() {
+        return Title;
     }
 }

@@ -42,6 +42,7 @@ public class PlannerController {
         printRewards(rewards);
         printTotalBenefit(rewards);
         printTotalPriceAfterDiscount(order, rewards);
+        printBadge(rewards);
     }
 
     private String getDate() {
@@ -80,5 +81,9 @@ public class PlannerController {
 
     private void printTotalPriceAfterDiscount(Order order, Rewards rewards) {
         outputView.printPriceAfterDiscount(order.findTotalPrice() + rewards.calculateDiscountPrice());
+    }
+
+    private void printBadge(Rewards rewards) {
+        outputView.printBadge(rewards.findBadgeForBenefit());
     }
 }

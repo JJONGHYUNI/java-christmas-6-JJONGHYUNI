@@ -1,10 +1,10 @@
 package christmas.model.reward;
 
-import christmas.model.event.constant.EventConstants;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static christmas.model.event.constant.EventConstants.*;
 
 public class Rewards {
     private final List<Reward> rewards;
@@ -27,9 +27,23 @@ public class Rewards {
 
     public int calculateDiscountPrice() {
         List<String> rewardTitles = rewards.stream().map(Reward::getTitle).toList();
-        if (rewardTitles.contains(EventConstants.GIFT_EVENT_PRICE.getSaleTitle())) {
-            return getBenfit() - EventConstants.GIFT_EVENT_PRICE.getSalePrice();
+        if (rewardTitles.contains(GIFT_EVENT_PRICE.getTitle())) {
+            return getBenfit() - GIFT_EVENT_PRICE.getPrice();
         }
         return getBenfit();
+    }
+
+    public String findBadgeForBenefit() {
+        int benefit = - getBenfit();
+        if (benefit >= SANTA_BADGE_INFORMATION.getPrice()) {
+            return SANTA_BADGE_INFORMATION.getTitle();
+        }
+        if (benefit >= TREE_BADGE_INFORMATION.getPrice()) {
+            return TREE_BADGE_INFORMATION.getTitle();
+        }
+        if (benefit >= STAR_BADGE_INFORMATION.getPrice()) {
+            return STAR_BADGE_INFORMATION.getTitle();
+        }
+        return NOTHING_BADGE_INFORMATION.getTitle();
     }
 }

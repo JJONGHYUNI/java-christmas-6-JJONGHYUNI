@@ -18,4 +18,8 @@ public class Rewards {
     public List<Reward> getRewards() {
         return Collections.unmodifiableList(rewards);
     }
+
+    public int getBenfit() {
+        return rewards.stream().mapToInt(Reward::getBenefit).sum();
+    }
 }

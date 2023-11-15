@@ -40,6 +40,7 @@ public class PlannerController {
         printTotalPriceBeforeDiscount(order.findTotalPrice());
         printGiftItem(order);
         printRewards(rewards);
+        printTotalBenefit(rewards);
     }
 
     private String getDate() {
@@ -70,5 +71,9 @@ public class PlannerController {
     private void printRewards(Rewards rewards) {
         List<RewardInfoDto> rewardInfoDtos = rewardsService.getRewards(rewards);
         outputView.printRewards(rewardInfoDtos);
+    }
+
+    private void printTotalBenefit(Rewards rewards) {
+        outputView.printTotalBenefit(rewards.getBenfit());
     }
 }

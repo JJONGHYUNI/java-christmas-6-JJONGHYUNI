@@ -71,7 +71,7 @@ public class Day {
 
     public List<RewardInfoDto> receiveDdayReward() {
         List<RewardInfoDto> rewardInfoDtos = new ArrayList<>();
-        if(isAppliedDdayEvent()) {
+        if (isAppliedDdayEvent()) {
             rewardInfoDtos.add(RewardInfoDto.create(
                     CHRISTMAS_D_DAY_DEFAULT_SALE_PRICE.getSaleTitle(),
                     CHRISTMAS_D_DAY_DEFAULT_SALE_PRICE.getSalePrice() + CHRISTMAS_D_DAY_ADD_SALE_PRICE.getSalePrice() * (day - 1)

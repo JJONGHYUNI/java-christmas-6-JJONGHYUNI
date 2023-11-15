@@ -9,6 +9,7 @@ import java.util.Map;
 
 public interface Event {
     List<RewardInfoDto> salePrice(Map<String, Integer> eachCategoryCounts);
+
     default boolean isAppliedEvent(int totalPrice) {
         return totalPrice < EventRule.EVENT_APPLY_AMOUNT.getAmount();
     }

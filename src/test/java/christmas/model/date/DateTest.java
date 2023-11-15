@@ -1,6 +1,5 @@
 package christmas.model.date;
 
-import christmas.model.date.Date;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

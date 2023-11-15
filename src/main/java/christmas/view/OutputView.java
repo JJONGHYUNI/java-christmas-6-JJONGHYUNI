@@ -1,6 +1,7 @@
 package christmas.view;
 
 import christmas.model.dto.MenuInfoDto;
+import christmas.model.dto.RewardInfoDto;
 import christmas.model.event.constant.EventConstants;
 import christmas.view.constant.OutputMessageConstants;
 
@@ -47,9 +48,21 @@ public class OutputView {
         printNewLine();
     }
 
+    public void printRewards(List<RewardInfoDto> rewardInfoDtos) {
+        System.out.println(OutputMessageConstants.REWARD_INFO_NOTICE_MESSAGE.getMessage());
+        rewardInfoDtos.forEach(OutputView::printReward);
+        printNewLine();
+    }
+
     private static void printMenu(MenuInfoDto menuInfoDto) {
         System.out.println(String.format(
                 OutputMessageConstants.MENU_INFO_MESSAGE.getMessage(), menuInfoDto.getName(), menuInfoDto.getCount()
+        ));
+    }
+
+    private static void printReward(RewardInfoDto rewardInfoDto) {
+        System.out.println(String.format(
+                OutputMessageConstants.REWARD_INFO_MESSAGE.getMessage(), rewardInfoDto.getRewardTitle(), rewardInfoDto.getRewardPrice()
         ));
     }
 

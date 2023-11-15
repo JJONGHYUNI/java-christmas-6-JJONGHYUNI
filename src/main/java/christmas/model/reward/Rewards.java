@@ -1,6 +1,7 @@
 package christmas.model.reward;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Rewards {
@@ -12,5 +13,9 @@ public class Rewards {
 
     public void addReward(Reward reward) {
         rewards.add(reward);
+    }
+
+    public List<Reward> getRewards() {
+        return Collections.unmodifiableList(rewards);
     }
 }

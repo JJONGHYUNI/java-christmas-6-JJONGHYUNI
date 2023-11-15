@@ -33,7 +33,8 @@ public class Order {
         menus.stream().forEach(menu -> {
             String category = menu.getMenuItem().getCategory();
             eachMenuCounts
-                    .put(category, eachMenuCounts.getOrDefault(category, OrderConstants.MENU_COUNT_INITIAL_VALUE.getNumber()) + OrderConstants.MENU_COUNT_ADD_VALUE.getNumber());
+                    .put(category, eachMenuCounts.getOrDefault(category, OrderConstants.MENU_COUNT_INITIAL_VALUE.getNumber()) + menu.getCount());
+            System.out.println(category);
         });
         return eachMenuCounts;
     }

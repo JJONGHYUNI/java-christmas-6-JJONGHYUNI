@@ -9,7 +9,9 @@ public enum OutputMessageConstants {
     TOTAL_AMOUNT_BEFORE_DISCOUNT_MESSAGE("%,d원"),
     GIFT_ITEM_NOTICE_MESSAGE("<증정 메뉴>"),
     GIFT_ITEM_MESSAGE("%s %d개"),
-    NOTHING_MESSAGE("없음");
+    NOTHING_MESSAGE("없음"),
+    REWARD_INFO_NOTICE_MESSAGE("<혜택 내역>"),
+    REWARD_INFO_MESSAGE("%s: %,d원");
 
     private final String message;
 

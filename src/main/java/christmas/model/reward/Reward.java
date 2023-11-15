@@ -11,4 +11,12 @@ public class Reward {
         this.title = reward.getKey();
         this.benefit = reward.getValue();
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getBenefit() {
+        return benefit;
+    }
 }

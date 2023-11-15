@@ -2,6 +2,7 @@ package christmas.controller;
 
 import christmas.model.day.Day;
 import christmas.model.dto.MenuInfoDto;
+import christmas.model.dto.RewardInfoDto;
 import christmas.model.order.Order;
 import christmas.model.reward.Reward;
 import christmas.model.reward.Rewards;
@@ -38,6 +39,7 @@ public class PlannerController {
         printOrderMenus(order);
         printTotalPriceBeforeDiscount(order.findTotalPrice());
         printGiftItem(order);
+        printRewards(rewards);
     }
 
     private String getDate() {
@@ -63,5 +65,10 @@ public class PlannerController {
 
     private void printGiftItem(Order order) {
         outputView.printGiftItem(order.isGiftEventApply());
+    }
+
+    private void printRewards(Rewards rewards) {
+        List<RewardInfoDto> rewardInfoDtos = rewardsService.getRewards(rewards);
+        outputView.printRewards(rewardInfoDtos);
     }
 }

@@ -1,15 +1,16 @@
 package christmas.model.day;
 
 import christmas.model.day.constant.Calendar;
-import christmas.model.day.constant.DayConstant;
-import christmas.model.event.Event;
+import christmas.model.event.constant.EventConstants;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.Map;
 
 import static christmas.model.day.constant.Calendar.*;
 import static christmas.model.day.constant.DayConstant.*;
+import static christmas.model.event.constant.EventConstants.*;
 
 public class Day {
     private final int day;
@@ -63,6 +64,16 @@ public class Day {
 
     public Calendar getCalendar() {
         return calendar;
+    }
+
+    public Map<String, Integer> receiveDdayReward() {
+        Map<String, Integer> rewardInfo = new HashMap<>();
+        if(isAppliedDdayEvent()) {
+            rewardInfo.put(
+                    CHRISTMAS_D_DAY_DEFAULT_SALE_PRICE.getSaleTitle(),
+                    CHRISTMAS_D_DAY_DEFAULT_SALE_PRICE.getSalePrice() + CHRISTMAS_D_DAY_ADD_SALE_PRICE.getSalePrice() * (day - 1));
+        }
+        return rewardInfo;
     }
 
     private boolean isAppliedDdayEvent() {

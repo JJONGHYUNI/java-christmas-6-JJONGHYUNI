@@ -4,8 +4,10 @@ import christmas.model.day.Day;
 import christmas.model.dto.MenuInfoDto;
 import christmas.model.order.Order;
 import christmas.model.reward.Reward;
+import christmas.model.reward.Rewards;
 import christmas.service.EventService;
 import christmas.service.OrderService;
+import christmas.service.RewardsService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -16,12 +18,14 @@ public class PlannerController {
     private final OutputView outputView;
     private final EventService eventService;
     private final OrderService orderService;
+    private final RewardsService rewardsService;
 
     public PlannerController() {
         inputView = new InputView();
         outputView = new OutputView();
         eventService = new EventService();
         orderService = new OrderService();
+        rewardsService = new RewardsService();
     }
 
     public void planning() {

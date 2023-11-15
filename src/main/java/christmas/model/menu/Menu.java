@@ -1,11 +1,10 @@
 package christmas.model.menu;
 
-import christmas.model.constant.DelimiterConstants;
-import christmas.model.constant.ErrorMessageConstants;
+import christmas.constant.DelimiterConstants;
 import christmas.model.menu.constant.MenuConstants;
 import christmas.model.menu.constant.MenuItem;
 
-import static christmas.model.constant.ErrorMessageConstants.*;
+import static christmas.constant.ErrorMessageConstants.*;
 
 public class Menu {
     private final MenuItem menuItem;

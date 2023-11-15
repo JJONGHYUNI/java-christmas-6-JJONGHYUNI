@@ -40,4 +40,15 @@ class OrderTest {
         //when,then
         assertThatThrownBy(() -> new Order(order, event)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("메뉴가 음료로만 구성됐을 경우 예외가 발생한다")
+    @Test
+    void createOrderOnlyDrinks() {
+        //given
+        String order = "제로콜라-2";
+        Event event = new WeekDayEvent();
+
+        //when,then
+        assertThatThrownBy(() -> new Order(order, event)).isInstanceOf(IllegalArgumentException.class);
+    }
 }

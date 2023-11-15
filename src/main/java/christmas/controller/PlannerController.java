@@ -1,11 +1,10 @@
 package christmas.controller;
 
-import christmas.model.day.Day;
+import christmas.model.date.Date;
 import christmas.model.dto.MenuInfoDto;
 import christmas.model.dto.RewardInfoDto;
 import christmas.model.event.Event;
 import christmas.model.order.Order;
-import christmas.model.reward.Reward;
 import christmas.model.reward.Rewards;
 import christmas.service.EventService;
 import christmas.service.OrderService;
@@ -30,12 +29,12 @@ public class PlannerController {
 
     public void planning() {
         outputView.printStartMessage();
-        Day day = getDate();
-        Event event = eventService.createEvent(day);
+        Date date = getDate();
+        Event event = eventService.createEvent(date);
         Order order = getOrder(event);
-        Rewards rewards = rewardsService.createRewards(day.receiveDdayReward(), order.findReward(), order.findGiftReward(), order.isEventApply());
+        Rewards rewards = rewardsService.createRewards(date.receiveDdayReward(), order.findReward(), order.findGiftReward(), order.isEventApply());
 
-        printPreviewRewardsMessage(day);
+        printPreviewRewardsMessage(date);
         printOrderMenus(order);
         printTotalPriceBeforeDiscount(order);
         printGiftItem(order);
@@ -45,10 +44,10 @@ public class PlannerController {
         printBadge(rewards);
     }
 
-    private Day getDate() {
+    private Date getDate() {
         while (true) {
             try {
-                return new Day(inputView.readDate());
+                return new Date(inputView.readDate());
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e.getMessage());
             }
@@ -65,8 +64,8 @@ public class PlannerController {
         }
     }
 
-    private void printPreviewRewardsMessage(Day day) {
-        outputView.printPreviewEventMessage(day.getDay());
+    private void printPreviewRewardsMessage(Date date) {
+        outputView.printPreviewEventMessage(date.getDay());
     }
 
     private void printTotalPriceBeforeDiscount(Order order) {

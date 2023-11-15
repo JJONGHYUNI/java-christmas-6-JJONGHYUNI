@@ -1,4 +1,4 @@
-package christmas.model.constant;
+package christmas.constant;
 
 public enum ErrorMessageConstants {
     DATE_EXCEPTION_MESSAGE("유효하지 않은 날짜입니다. 다시 입력해 주세요."),

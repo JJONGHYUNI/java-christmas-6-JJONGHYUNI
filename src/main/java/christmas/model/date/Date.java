@@ -1,7 +1,6 @@
-package christmas.model.day;
+package christmas.model.date;
 
-import christmas.model.constant.ErrorMessageConstants;
-import christmas.model.day.constant.Calendar;
+import christmas.model.date.constant.Calendar;
 import christmas.model.dto.RewardInfoDto;
 
 import java.time.DayOfWeek;
@@ -9,16 +8,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static christmas.model.constant.ErrorMessageConstants.*;
-import static christmas.model.day.constant.Calendar.*;
-import static christmas.model.day.constant.DayConstant.*;
+import static christmas.constant.ErrorMessageConstants.*;
+import static christmas.model.date.constant.Calendar.*;
+import static christmas.model.date.constant.DayConstant.*;
 import static christmas.model.event.constant.EventConstants.*;
 
-public class Day {
+public class Date {
     private final int day;
     private final Calendar calendar;
 
-    public Day(String date) {
+    public Date(String date) {
         int checkDay = validateDateIsNumeric(date);
         validate(checkDay);
         this.day = checkDay;

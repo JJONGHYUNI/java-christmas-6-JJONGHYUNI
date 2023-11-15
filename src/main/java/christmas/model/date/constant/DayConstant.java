@@ -1,4 +1,4 @@
-package christmas.model.day.constant;
+package christmas.model.date.constant;
 
 public enum DayConstant {
     CURRENT_YEAR(2023),

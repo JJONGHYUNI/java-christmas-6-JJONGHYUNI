@@ -1,4 +1,4 @@
-package christmas.model.constant;
+package christmas.constant;
 
 public enum DelimiterConstants {
     ORDER_SPLIT_DELIMITER(","),

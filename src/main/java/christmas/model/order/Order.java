@@ -1,17 +1,17 @@
 package christmas.model.order;
 
-import christmas.model.constant.DelimiterConstants;
-import christmas.model.constant.ErrorMessageConstants;
+import christmas.constant.DelimiterConstants;
 import christmas.model.dto.RewardInfoDto;
 import christmas.model.event.Event;
 import christmas.model.event.constant.EventRule;
 import christmas.model.menu.Menu;
+import christmas.model.menu.constant.MenuCategory;
 import christmas.model.menu.constant.MenuItem;
 import christmas.model.order.constant.OrderConstants;
 
 import java.util.*;
 
-import static christmas.model.constant.ErrorMessageConstants.*;
+import static christmas.constant.ErrorMessageConstants.*;
 import static christmas.model.event.constant.EventConstants.*;
 
 public class Order {
@@ -25,6 +25,7 @@ public class Order {
                 .forEach(menuInfo -> menus.add(new Menu(menuInfo)));
         validateDuplicate();
         validateMenuSize();
+        validateMenuConstitude();
         this.event = event;
     }
 
@@ -55,6 +56,13 @@ public class Order {
     private void validateDuplicate() {
         List<MenuItem> menuItems = menus.stream().map(Menu::getMenuItem).toList();
         if (menuItems.size() != new HashSet<>(menuItems).size()) {
+            throw new IllegalArgumentException(MENU_EXCEPTION_MESSAGE.getMessage());
+        }
+    }
+
+    private void validateMenuConstitude() {
+        Set<String> categorys = new HashSet<>(menus.stream().map(menu -> menu.getMenuItem().getCategory()).toList());
+        if (categorys.size() == OrderConstants.CATEGORY_VALID_VALUE.getNumber() && categorys.contains(MenuCategory.DRINK.getCategoryName())) {
             throw new IllegalArgumentException(MENU_EXCEPTION_MESSAGE.getMessage());
         }
     }

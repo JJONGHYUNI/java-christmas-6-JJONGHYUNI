@@ -14,8 +14,10 @@ public class WeekendEvent implements Event{
     @Override
     public List<RewardInfoDto> salePrice(Map<String, Integer> eachCategoryCounts) {
         List<RewardInfoDto> rewardInfoDtos = new ArrayList<>();
-        rewardInfoDtos.add(RewardInfoDto.create(WEEKEND_EVENT_SALE_PRICE.getSaleTitle(),
-                WEEKEND_EVENT_SALE_PRICE.getSalePrice() * eachCategoryCounts.get(MenuCategory.MAIN.getCategoryName())));
+        if (isContainMainCategory(eachCategoryCounts)) {
+            rewardInfoDtos.add(RewardInfoDto.create(WEEKEND_EVENT_SALE_PRICE.getSaleTitle(),
+                    WEEKEND_EVENT_SALE_PRICE.getSalePrice() * eachCategoryCounts.get(MenuCategory.MAIN.getCategoryName())));
+        }
         return rewardInfoDtos;
     }
 }

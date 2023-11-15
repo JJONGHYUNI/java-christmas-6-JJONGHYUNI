@@ -33,7 +33,6 @@ public class Order {
             String category = menu.getMenuItem().getCategory();
             eachMenuCounts
                     .put(category, eachMenuCounts.getOrDefault(category, OrderConstants.MENU_COUNT_INITIAL_VALUE.getNumber()) + menu.getCount());
-            System.out.println(category);
         });
         return eachMenuCounts;
     }
@@ -86,5 +85,9 @@ public class Order {
 
     public boolean isGiftEventApply() {
         return findTotalPrice() > EventRule.GIFT_EVENT_APPLY_AMOUNT.getAmount();
+    }
+
+    public boolean isEventApply() {
+        return event.isAppliedEvent(findTotalPrice());
     }
 }

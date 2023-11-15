@@ -5,14 +5,18 @@ import christmas.model.reward.Reward;
 import christmas.model.reward.Rewards;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 public class RewardsService {
     private final RewardService rewardService = new RewardService();
 
-    public Rewards createRewards(List<RewardInfoDto> dDayRewards, List<RewardInfoDto> discountRewards, List<RewardInfoDto> giftRewards) {
+    public Rewards createRewards(List<RewardInfoDto> dDayRewards, List<RewardInfoDto> discountRewards, List<RewardInfoDto> giftRewards, boolean isApplied) {
         Rewards rewards = new Rewards();
+        if(!isApplied) {
+            System.out.println("오류");
+            return rewards;
+        }
         List<RewardInfoDto> rewardInfoDtos = new ArrayList<>();
         rewardInfoDtos.addAll(dDayRewards);
         rewardInfoDtos.addAll(discountRewards);
@@ -27,9 +31,16 @@ public class RewardsService {
     }
 
     public List<RewardInfoDto> getRewards(Rewards rewards) {
+        if (isEmptyReward(rewards)) {
+            return new ArrayList<>(Collections.emptyList());
+        }
         return rewards.getRewards()
                 .stream()
                 .map(rewardService::getRewardInfo)
                 .toList();
+    }
+
+    private boolean isEmptyReward(Rewards rewards) {
+        return rewards.getRewards().isEmpty();
     }
 }

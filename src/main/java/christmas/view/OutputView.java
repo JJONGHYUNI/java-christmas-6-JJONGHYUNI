@@ -6,8 +6,6 @@ import christmas.model.event.constant.EventConstants;
 import christmas.view.constant.OutputMessageConstants;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 public class OutputView {
     public void printStartMessage() {
@@ -37,19 +35,22 @@ public class OutputView {
 
     public void printGiftItem(boolean giftEventApplied) {
         System.out.println(OutputMessageConstants.GIFT_ITEM_NOTICE_MESSAGE.getMessage());
-        if(giftEventApplied) {
+        if (giftEventApplied) {
             System.out.println(String.format(
                     OutputMessageConstants.GIFT_ITEM_MESSAGE.getMessage(), EventConstants.GIFT_EVENT_ITEM.getSaleTitle(), EventConstants.GIFT_EVENT_ITEM.getSalePrice()
             ));
             printNewLine();
             return;
         }
-        System.out.println(OutputMessageConstants.NOTHING_MESSAGE.getMessage());
-        printNewLine();
+        printNoting();
     }
 
     public void printRewards(List<RewardInfoDto> rewardInfoDtos) {
         System.out.println(OutputMessageConstants.REWARD_INFO_NOTICE_MESSAGE.getMessage());
+        if (rewardInfoDtos.isEmpty()) {
+            printNoting();
+            return;
+        }
         rewardInfoDtos.forEach(OutputView::printReward);
         printNewLine();
     }
@@ -64,6 +65,11 @@ public class OutputView {
         System.out.println(String.format(
                 OutputMessageConstants.REWARD_INFO_MESSAGE.getMessage(), rewardInfoDto.getRewardTitle(), rewardInfoDto.getRewardPrice()
         ));
+    }
+
+    private static void printNoting() {
+        System.out.println(OutputMessageConstants.NOTHING_MESSAGE.getMessage());
+        printNewLine();
     }
 
     private static void printNewLine() {

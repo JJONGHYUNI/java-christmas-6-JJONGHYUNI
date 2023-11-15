@@ -2,6 +2,7 @@ package christmas.model.order;
 
 import christmas.model.constant.DelimiterConstants;
 import christmas.model.event.Event;
+import christmas.model.event.constant.EventConstants;
 import christmas.model.event.constant.EventRule;
 import christmas.model.menu.Menu;
 import christmas.model.menu.constant.MenuItem;
@@ -9,6 +10,8 @@ import christmas.model.order.constant.OrderConstants;
 import christmas.model.reward.Reward;
 
 import java.util.*;
+
+import static christmas.model.event.constant.EventConstants.*;
 
 public class Order {
     private final List<Menu> menus = new ArrayList<>();
@@ -61,6 +64,16 @@ public class Order {
 
     public Map<String, Integer> findReward() {
         return event.salePrice(getEachMenuCount());
+    }
+
+    public Map<String, Integer> findGiftReward() {
+        Map<String, Integer> rewardInfo = new HashMap<>();
+        if(isGiftEventApply()) {
+            rewardInfo.put(
+                    GIFT_EVENT_ITEM.getSaleTitle(), GIFT_EVENT_PRICE.getSalePrice()
+            );
+        }
+        return rewardInfo;
     }
 
     public int findTotalPrice() {
